@@ -1,0 +1,14 @@
+[Unit]
+Description=CVSS
+Documentation=https://github.com/CVSS
+After=network.target
+
+[Service]
+Environment=NODE_ENV=production
+Type=simple
+User=webapp
+ExecStart=/data/server/node/bin/node /data/server/repos/CVSS/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+//- Copyright (c) 2024 CVEDB All rights reserved.
+
+center.pad
+  .pad2.center.tgrey
+    if startTime
+        - var timeTaken = renderStartTime - startTime;
+        - var renderTime = Date.now() - renderStartTime;
+        .pad2.center.sml.tgrey
+            if !isNaN(timeTaken) 
+                | Responded in 
+                = timeTaken 
+                | ms 
+            if !isNaN(renderTime)
+                | (rendered in  
+                = renderTime
+                | ms)
+    small
+        = conf.classification
+        | 
+        = conf.copyright
+    br
+    small
+        = conf.orgName
+        |  
+        = conf.groupName
+        block logolink
