@@ -7,33 +7,10 @@ const User = require('../models/user.js');
 const readline = require('readline');
 const mongoose = require('mongoose');
 const config = require('../config/conf');
+const { hidden } = require('./hidden.js');
 
 mongoose.Promise = global.Promise;
 mongoose.set('strictQuery', false);
-
-function hidden(query, callback) {
-    var stdin = process.openStdin();
-    var onDataHandler = function (char) {
-        char = char + "";
-        switch (char) {
-            case "\n":
-            case "\r":
-            case "\u0004":
-                // Remove this handler
-                stdin.removeListener("data", onDataHandler);
-                break; //stdin.pause(); break;
-            default:
-                process.stdout.write("\033[2K\033[200D" + query + Array(rl.line.length + 1).join("*"));
-                break;
-        }
-    };
-    process.stdin.on("data", onDataHandler);
-
-    rl.question(query, function (value) {
-        rl.history = rl.history.slice(1);
-        callback(value);
-    });
-}
 
 const args = process.argv;
 
@@ -45,6 +22,7 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+exports.rl = rl;
 
 let newUser = new User({
                 name: args[4],
