@@ -10,7 +10,6 @@ The name CVSS is inspired from Greek origin suffix '-gram' which is used for den
 
 CVSS project aims to make it easier for vendors and security researchers to accurately record vulnerability information for inclusion in the CVE List.
 
-<img src="https://raw.githubusercontent.com/CVSS/cvedb.github.io/master/screenshots/CVSS-ScreenShot.jpg" width="50%">
 
 ## Getting started
 
